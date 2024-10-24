@@ -13,7 +13,7 @@ public class UserController {
     //We need access to the UserService - let's use Constructor Injection!
     private UserService userService;
 
-    @Autowired
+    @Autowired //This tells Spring to dependency inject the UserService
     public UserController(UserService userService) {
         this.userService = userService;
     }
