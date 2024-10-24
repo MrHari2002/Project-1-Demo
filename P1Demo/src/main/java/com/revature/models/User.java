@@ -23,12 +23,13 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, columnDefinition="TEXT DEFAULT 'user'") //set default role to 'user'
+    @Column(nullable = false) //setting default role to 'user' in the no-args constructor
     private String role;
 
     //boilerplate----------------------------------no args, all args, getter/setter/ toString
 
     public User() {
+        this.role = "user"; //we need this to set the default role to "user"
     }
 
     public User(int userId, String username, String password, String role) {

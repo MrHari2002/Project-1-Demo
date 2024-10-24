@@ -29,6 +29,10 @@ public class UserController {
         return ResponseEntity.ok(u); //Return the saved User with a 200 status code (200 - OK)
     }
 
+    //TODO: get all users (call to the service)
+
+    //TODO: get user by username (call to the service)
+
 
     //Exception Handler for IllegalArgumentException
     @ExceptionHandler(IllegalArgumentException.class)

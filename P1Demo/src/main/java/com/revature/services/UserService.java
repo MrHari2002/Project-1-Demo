@@ -42,5 +42,8 @@ public class UserService {
     }
 
 
+    //TODO: get all users
+
+    //TODO: get user by username (require a custom DAO method)
 
 }
