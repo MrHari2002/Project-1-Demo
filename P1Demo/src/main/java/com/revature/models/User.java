@@ -14,8 +14,7 @@ public class User {
 
     /* @Column isn't necessary UNLESS you want to set a name, or set constraints
        -nullable = NOT NULL constraint
-       -unique = UNIQUE constraint
-       -columnDefinition = lets you define more complex constraints (check, default) */
+       -unique = UNIQUE constraint */
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -23,14 +22,12 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false) //setting default role to 'user' in the no-args constructor
-    private String role;
+    @Column(nullable = false)
+    private String role = "user"; //setting default role to 'user'
 
     //boilerplate----------------------------------no args, all args, getter/setter/ toString
 
-    public User() {
-        this.role = "user"; //we need this to set the default role to "user"
-    }
+    public User() {}
 
     public User(int userId, String username, String password, String role) {
         this.userId = userId;
