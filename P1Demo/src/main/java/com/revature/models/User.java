@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
@@ -37,8 +38,8 @@ public class User {
      cascade: This lets us define what operations cascade down to dependent records\
         -CascadeType.ALL = all operations cascade down to dependent records (update, delete, etc) */
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+     //prevents the circular reference in our JSON responses
     private List<Pet> pets;
-    //TODO: circular reference issue
 
     //boilerplate----------------------------------no args, all args, getter/setter/ toString
 
@@ -81,6 +82,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public List<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
     }
 
     @Override
