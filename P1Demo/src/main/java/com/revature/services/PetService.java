@@ -10,6 +10,8 @@ import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service //Makes a class a bean. Stereotype annotation.
@@ -53,6 +55,13 @@ public class PetService {
             return pDAO.save(newPet);
         }
 
+    }
+
+    //This method gets all pets from the DB
+    public List<Pet> getAllPets(){
+
+        //not much error handling in a get all
+        return pDAO.findAll();
     }
 
 

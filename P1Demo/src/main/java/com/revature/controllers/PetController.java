@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController //Combines @Controller and @ResponseBody
 @RequestMapping("/pets") //any HTTP request with "/pets" will go here
 public class PetController {
@@ -28,6 +30,15 @@ public class PetController {
 
         //send the new Pet data back to the client with 201 - CREATED
         return ResponseEntity.status(201).body(p);
+
+    }
+
+    //A method that gets all Pets from the DB
+    @GetMapping //GET requests to /pets will come here
+    public ResponseEntity<List<Pet>> getAllPets(){
+
+        //Let's return the Pets all in one line
+        return ResponseEntity.ok(petService.getAllPets());
 
     }
 
