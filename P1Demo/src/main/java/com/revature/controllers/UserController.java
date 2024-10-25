@@ -28,7 +28,8 @@ public class UserController {
         //Send the new user to the Service to be inserted, and save the returned User
         User u = userService.register(newUser);
 
-        return ResponseEntity.ok(u); //Return the saved User with a 200 status code (200 - OK)
+        //Return the saved User with a 201 status code (201 - CREATED)
+        return ResponseEntity.status(201).body(u);
     }
 
     //GET request to get all Users
