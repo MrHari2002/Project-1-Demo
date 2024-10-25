@@ -5,6 +5,8 @@ import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /*What is the Service layer?? It's also known as the "Business Logic Layer" because...
 
     -This is where we do any data processing/error handling that DOESN'T have to do with the DB or HTTP
@@ -29,6 +31,8 @@ public class UserService {
     public User register(User newUser){
 
         //TODO: Check that the username is unique (get user by username, see if it's null)
+        //User u = findByUsername(newUser.getUsername());
+        //If u is not null, throw an exception because the username already exists
 
         //Make sure the username is present in the new User (TODO: password too)
         if(newUser.getUsername() == null || newUser.getUsername().isBlank()){
@@ -42,8 +46,25 @@ public class UserService {
     }
 
 
-    //TODO: get all users
+    //This method gets all users from the DB
+    public List<User> getAllUsers(){
+        //findAll() is a JPA method that returns all records in a table
+        return userDAO.findAll();
 
-    //TODO: get user by username (require a custom DAO method)
+        //Not much error handling in a get all... maybe checking to see if it's empty?
+    }
+
+
+    //This method gets a user by username
+    public User getUserByUsername(String username){
+
+        //a little error handling
+        if(username == null || username.isBlank()){
+            throw new IllegalArgumentException("Please search for a valid username!");
+        }
+
+        //findByUsername is a method WE DEFINED in the UserDAO (but didn't have to implement!)
+        return userDAO.findByUsername(username);
+    }
 
 }

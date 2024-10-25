@@ -12,6 +12,17 @@ import org.springframework.stereotype.Repository;
 @Repository //1 of the 4 stereotype annotations. It registers this class as a Spring Bean
 public interface UserDAO extends JpaRepository<User, Integer> {
 
+    /*I want to be able to find a User by their username
+      Unfortunately, Spring Data doesn't have a built in method for that
+      So we have to define our own method signature, and Spring will implement it for us
+      ****This is called a PROPERTY EXPRESSION */
+    User findByUsername(String username);
 
+    /*NOTE: The method MUST be named findByXyz, where Xyz is the name of a field in User
+
+     How does Spring Data know? It's based on the name of the field in the Model
+     more examples: User findByUsernameAndPassword, List<User> findByRole
+
+    Property Expressions are quite flexible, look into them for more patterns!*/
 
 }

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController //Combines @Controller (makes a class a bean) @ResponseBody(HTTP response body -> JSON)
 @RequestMapping("/users") //All HTTP Requests made to /users will hit this Controller
 public class UserController {
@@ -29,9 +31,36 @@ public class UserController {
         return ResponseEntity.ok(u); //Return the saved User with a 200 status code (200 - OK)
     }
 
-    //TODO: get all users (call to the service)
+    //GET request to get all Users
+    @GetMapping //GET requests to /users will come here
+    public ResponseEntity<List<User>> getAllUsers(){
 
-    //TODO: get user by username (call to the service)
+        //not much error handling in a get all
+        List<User> allUsers = userService.getAllUsers();
+
+        //send the users back with a 200 status code
+        return ResponseEntity.ok(allUsers);
+
+    }
+
+    //GET requests to get a single User by username
+    @GetMapping("/{username}") //GET requests to /users/{username} will come here
+    public ResponseEntity<?> getUserByUsername(@PathVariable String username){
+
+        //ResponseEntity<?>??? what's that?
+        //-It lets us send any data type we want in the response
+        //I avoid this when possible, it can make debugs pretty annoying
+        //But I'll often use it since it's so flexible
+
+        //if no user is found, we can send a message saying no user found
+        if(userService.getUserByUsername(username) == null){
+            return ResponseEntity.status(404).body("No user found with username: " + username);
+        }
+
+        //Return the found User with a 200 status code
+        return ResponseEntity.ok(userService.getUserByUsername(username));
+
+    }
 
 
     //Exception Handler for IllegalArgumentException
@@ -40,5 +69,7 @@ public class UserController {
         //Return a 400 (BAD REQUEST) status code with the exception message
         return ResponseEntity.status(400).body(e.getMessage());
     }
+
+    //TODO: Handler for SqlExceptions!!
 
 }
