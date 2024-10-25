@@ -38,7 +38,7 @@ public class User {
      cascade: This lets us define what operations cascade down to dependent records\
         -CascadeType.ALL = all operations cascade down to dependent records (update, delete, etc) */
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-     //prevents the circular reference in our JSON responses
+    @JsonIgnore //prevents the circular reference in our JSON responses
     private List<Pet> pets;
 
     //boilerplate----------------------------------no args, all args, getter/setter/ toString
