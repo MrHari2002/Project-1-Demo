@@ -28,8 +28,6 @@ public class User {
     private String role = "user"; //setting default role to 'user'
 
 
-
-
     /*One to Many relationship (goes hand in hand with the @ManyToOne in Pet)
 
      mappedBy: This refers to the @ManyToOne field in Pet that maps this relationship (user)

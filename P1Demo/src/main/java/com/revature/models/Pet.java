@@ -31,6 +31,58 @@ public class Pet {
     @JoinColumn(name = "userId") //this links our FK to the PK in User (has to be the same name!!!)
     private User user;
 
-    //TODO: boilerplate code-------------
+    //boilerplate code-----------------------
+
+    public Pet() {
+    }
+
+    public Pet(int petId, String species, String name, User user) {
+        this.petId = petId;
+        this.species = species;
+        this.name = name;
+        this.user = user;
+    }
+
+    public int getPetId() {
+        return petId;
+    }
+
+    public void setPetId(int petId) {
+        this.petId = petId;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "petId=" + petId +
+                ", species='" + species + '\'' +
+                ", name='" + name + '\'' +
+                ", user=" + user +
+                '}';
+    }
 
 }

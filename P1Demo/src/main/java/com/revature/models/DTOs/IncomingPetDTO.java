@@ -1,6 +1,9 @@
 package com.revature.models.DTOs;
 
-public class PetDTO {
+//Remember what a DTO is? Data Transfer Object
+//This Class will be used to model incoming Pet JSON data
+    //We get to skip the petId, and we can just use an int for User instead of a whole User object
+public class IncomingPetDTO {
 
     private String species;
     private String name;
@@ -8,10 +11,10 @@ public class PetDTO {
 
     //boilerplate code--------------------------
 
-    public PetDTO() {
+    public IncomingPetDTO() {
     }
 
-    public PetDTO(String species, String name, int userId) {
+    public IncomingPetDTO(String species, String name, int userId) {
         this.species = species;
         this.name = name;
         this.userId = userId;
