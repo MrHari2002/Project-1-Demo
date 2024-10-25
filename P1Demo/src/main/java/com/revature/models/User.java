@@ -3,6 +3,8 @@ package com.revature.models;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component //This Class will be registered as a Spring Bean
 @Entity //This Class will be created as a table in the DB (In other words, a DB ENTITY)
 @Table(name = "users") //@Table lets us set properties like table name. THIS IS NOT WHAT MAKES IT A TABLE
@@ -24,6 +26,21 @@ public class User {
 
     @Column(nullable = false)
     private String role = "user"; //setting default role to 'user'
+
+
+
+
+    /*One to Many relationship (goes hand in hand with the @ManyToOne in Pet)
+
+     mappedBy: This refers to the @ManyToOne field in Pet that maps this relationship (user)
+
+     fetch: refer to the Pet class for info on this guy
+
+     cascade: This lets us define what operations cascade down to dependent records\
+        -CascadeType.ALL = all operations cascade down to dependent records (update, delete, etc) */
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Pet> pets;
+    //TODO: circular reference issue
 
     //boilerplate----------------------------------no args, all args, getter/setter/ toString
 

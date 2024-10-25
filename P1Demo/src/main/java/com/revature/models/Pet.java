@@ -31,4 +31,6 @@ public class Pet {
     @JoinColumn(name = "userId") //this links our FK to the PK in User (has to be the same name!!!)
     private User user;
 
+    //TODO: boilerplate code-------------
+
 }
