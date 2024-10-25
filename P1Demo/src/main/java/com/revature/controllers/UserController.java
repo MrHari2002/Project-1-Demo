@@ -48,7 +48,7 @@ public class UserController {
     public ResponseEntity<?> getUserByUsername(@PathVariable String username){
 
         //ResponseEntity<?>??? what's that?
-        //-It lets us send any data type we want in the response
+        //It lets us send any data type we want in the response
         //I avoid this when possible, it can make debugs pretty annoying
         //But I'll often use it since it's so flexible
 
