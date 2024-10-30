@@ -63,6 +63,16 @@ public class UserController {
 
     }
 
+    //A method that updates a User's role
+    @PatchMapping("/{userId}") //PATCH requests to /users/{userId} will come here
+    public ResponseEntity<User> updateUserRole(@PathVariable int userId, @RequestBody String newRole){
+
+        //send back a 202 (ACCEPTED) with the User returned from the Service as the Response Body
+        return ResponseEntity.status(202).body(userService.updateUserRole(userId, newRole));
+
+    }
+
+    //Exception Handlers----------------------------------------
 
     //Exception Handler for IllegalArgumentException
     @ExceptionHandler(IllegalArgumentException.class)
