@@ -70,4 +70,27 @@ public class UserService {
         return userDAO.findByUsername(username);
     }
 
+    //This method updates a user's role in the DB (need to supply user id and new role)
+    public User updateUserRole(int userId, String newRole){
+
+        //TODO: error handling - make sure the role is valid (non-empty, and either "user" or "admin")
+
+        //get the user by ID - if it exists, update the role, otherwise IllegalArgException
+
+        //orElseThrow() will either return the value or throw NoSuchElementException
+        //We'll handle the IllegalArgumentException in the controller
+        User u = userDAO.findById(userId).orElseThrow(() ->
+                new IllegalArgumentException("No user found with id: " + userId));
+
+        //If we reach this point, we know the user exists. Update the role!
+        u.setRole(newRole);
+
+        //Save the updated user (this will go in as an update, since this user id already exists)
+        userDAO.save(u);
+
+        //The newest version of the user object! Send it to the controller
+        return u;
+
+    }
+
 }

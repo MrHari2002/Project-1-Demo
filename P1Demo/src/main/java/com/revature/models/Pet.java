@@ -19,7 +19,6 @@ public class Pet {
     @Column(nullable = false)
     private String name;
 
-
     /*Primary Key / Foreign Key relationship!! (Many to One)
 
      fetch - defines whether the Dependency (User) is eagerly or lazily loaded
@@ -29,7 +28,7 @@ public class Pet {
      @JoinColumn - defines the column that will be used to link these tables (PK of User)
         -We have to supply the name of the PK field that this FK is referring to */
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "userId") //this links our FK to the PK in User (has to be the same name!!!)
+    @JoinColumn(name = "userId") //this links our FK to the PK in User (name names the column!)
     private User user;
 
     //boilerplate code-----------------------
