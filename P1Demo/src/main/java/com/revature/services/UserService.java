@@ -1,10 +1,12 @@
 package com.revature.services;
 
 import com.revature.daos.UserDAO;
+import com.revature.models.DTOs.OutgoingUserDTO;
 import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*What is the Service layer?? It's also known as the "Business Logic Layer" because...
@@ -47,9 +49,23 @@ public class UserService {
 
 
     //This method gets all users from the DB
-    public List<User> getAllUsers(){
+    public List<OutgoingUserDTO> getAllUsers(){
         //findAll() is a JPA method that returns all records in a table
-        return userDAO.findAll();
+        List<User> users = userDAO.findAll();
+
+        //Empty List of OutUserDTOs to be filled by the processing below
+        List<OutgoingUserDTO> outUsers = new ArrayList<OutgoingUserDTO>();
+
+        //loop through the users and add to the outUsers
+        for(User user : users){
+            //we're just taking each User and creating OutUsers from it
+            outUsers.add(
+                new OutgoingUserDTO(user.getUserId(), user.getUsername(), user.getRole())
+            );
+        }
+
+        //return our new list of outgoing users!
+        return outUsers;
 
         //Not much error handling in a get all... maybe checking to see if it's empty?
     }

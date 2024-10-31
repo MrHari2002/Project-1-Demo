@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.models.DTOs.OutgoingUserDTO;
 import com.revature.models.User;
 import com.revature.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +35,10 @@ public class UserController {
 
     //GET request to get all Users
     @GetMapping //GET requests to /users will come here
-    public ResponseEntity<List<User>> getAllUsers(){
+    public ResponseEntity<List<OutgoingUserDTO>> getAllUsers(){
 
         //not much error handling in a get all
-        List<User> allUsers = userService.getAllUsers();
+        List<OutgoingUserDTO> allUsers = userService.getAllUsers();
 
         //send the users back with a 200 status code
         return ResponseEntity.ok(allUsers);
