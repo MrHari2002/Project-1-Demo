@@ -72,6 +72,14 @@ public class UserController {
 
     }
 
+    //A method that deletes a User by id
+    @DeleteMapping("/{userId}") //DELETE requests to /users/{userId} will come here
+    public ResponseEntity<User> deleteUserById(@PathVariable int userId){
+
+        return ResponseEntity.ok(userService.deleteUserById(userId));
+
+    }
+
     //Exception Handlers----------------------------------------
 
     //Exception Handler for IllegalArgumentException

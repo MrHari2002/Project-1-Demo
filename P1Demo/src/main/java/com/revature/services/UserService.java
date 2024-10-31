@@ -93,4 +93,20 @@ public class UserService {
 
     }
 
+    //This method deletes a User from the DB
+    public User deleteUserById(int userId){
+
+        //TODO: error handling - make sure the user id is > 0
+
+        //Find the user ID - if it exists, delete it, otherwise IllegalArgException
+        //Remember, this Exception will be handled in the Controller
+        User userToDelete = userDAO.findById(userId).orElseThrow(() ->
+                new IllegalArgumentException("No user found with id: " + userId));
+
+        userDAO.deleteById(userId); //Inherited from JpaRepository
+
+        return userToDelete;
+
+    }
+
 }
