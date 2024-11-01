@@ -42,6 +42,15 @@ public class PetController {
 
     }
 
+    //A method that gets all Pets by UserId
+    @GetMapping("/user/{userId}") //GET requests to /pets/user/{userId} will come here
+    public ResponseEntity<List<Pet>> getPetsByUserId(@PathVariable int userId){
+
+        //Another one liner
+        return ResponseEntity.ok(petService.getPetsByUserId(userId));
+
+    }
+
     //Exception Handler (stole this from the UserController)
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegalArgument(IllegalArgumentException e){

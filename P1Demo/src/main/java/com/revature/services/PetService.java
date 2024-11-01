@@ -64,5 +64,14 @@ public class PetService {
         return pDAO.findAll();
     }
 
+    //This method gets all pets by userId
+    public List<Pet> getPetsByUserId(int userId){
+
+        //TODO: error handling - incoming id, make sure user exists, make sure > 0 pets returned etc
+
+        return pDAO.findByUserUserId(userId);
+
+    }
+
 
 }

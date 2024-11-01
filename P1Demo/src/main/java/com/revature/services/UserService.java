@@ -64,7 +64,7 @@ public class UserService {
             );
         }
 
-        //return our new list of outgoing users!
+        //return our new list of outgoing user DTOs!
         return outUsers;
 
         //Not much error handling in a get all... maybe checking to see if it's empty?
