@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Container } from "react-bootstrap"
+import { PetTable } from "./PetTable"
 
 export const PetContainer:React.FC = () => {
 
@@ -33,7 +34,8 @@ export const PetContainer:React.FC = () => {
         /* TODO: navbar thing? for navigation options etc */
         <Container>
 
-              
+            {/* Sending the entire pets array to get rendered in the PetTable Component */}
+            <PetTable pets={pets}></PetTable>
 
         </Container>
     )
