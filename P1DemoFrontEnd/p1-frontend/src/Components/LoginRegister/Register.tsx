@@ -1,5 +1,7 @@
+import axios from "axios"
 import { useState } from "react"
 import { Button, Container, Form } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 
 
 export const Register:React.FC = () => {
@@ -9,6 +11,9 @@ export const Register:React.FC = () => {
         username:"",
         password:""
     })
+
+    //Define a useNavigate so we can switch URLs around
+    const navigate = useNavigate()
 
     //Function to store values when an input box changes
     const storeValues = (input:any) => {
@@ -33,8 +38,16 @@ export const Register:React.FC = () => {
     }
 
     //Register function that sends the username/password to the backend
+    const register = async () => {
 
+        //TODO: check username/password are present
 
+        //POST REQUEST - send the new user info to the backend
+        const response = await axios.post("http://localhost:7777/users", user)
+        .then(()=>{alert("success!")})
+        .catch((error)=>{alert("Failed! " + error.message)})
+
+    }
 
 
     return(
@@ -63,8 +76,8 @@ export const Register:React.FC = () => {
                 </div>
 
                 <div>
-                    <Button className="btn-success m-1">Register</Button>
-                    <Button className="btn-dark">Back</Button>
+                    <Button className="btn-success m-1" onClick={register}>Register</Button>
+                    <Button className="btn-dark" onClick={()=>navigate("/")}>Back</Button>
                 </div>
             </div>
         </Container>

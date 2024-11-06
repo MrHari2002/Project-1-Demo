@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController //Combines @Controller (makes a class a bean) @ResponseBody(HTTP response body -> JSON)
 @RequestMapping("/users") //All HTTP Requests made to /users will hit this Controller
+@CrossOrigin //This annotation allows cross-origin-resource-sharing from any source (CORS!)
 public class UserController {
 
     //We need access to the UserService - let's use Constructor Injection!
