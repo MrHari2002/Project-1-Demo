@@ -1,17 +1,41 @@
+import { useState } from "react"
 import { Button, Container, Form } from "react-bootstrap"
 
 
 export const Register:React.FC = () => {
 
     //Define a state object to store the username and password
+    const[user, setUser] = useState({
+        username:"",
+        password:""
+    })
 
-    //TODO: function to store values
+    //Function to store values when an input box changes
     const storeValues = (input:any) => {
-        
+
+        console.log(input)
+
+        const name = input.target.name //the name of the input box that changed
+        const value = input.target.value //the value in the input box 
+
+        //input = the entire event (which got passed in as an argument)
+        //target = the specific input box that triggered the onChange event
+        //name/value = the name/value of the input box
+
+        //annoying syntax - We need to send the entire user object to make a change to one field
+        //"Take whatever input was changed, and set the matching field in user to the value in the input"
+        //[name] can be EITHER username or password here. Flexibility!
+        setUser((user) => ({...user, [name]:value}))
+
+        //Remember the spread operator (...) lets us access the values of the object individually
+
+        console.log(user)
     }
 
     //Register function that sends the username/password to the backend
-    
+
+
+
 
     return(
         /* what's my and mx? this is margin for y and x axis
