@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Login } from './Components/LoginRegister/Login';
 import { Register } from './Components/LoginRegister/Register';
+import 'bootstrap/dist/css/bootstrap.css'; //NEED THIS FOR BOOTSTRAP TO WORK
 
 function App() {
   return (
