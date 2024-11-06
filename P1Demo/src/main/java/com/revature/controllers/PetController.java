@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController //Combines @Controller and @ResponseBody
 @RequestMapping("/pets") //any HTTP request with "/pets" will go here
+@CrossOrigin
 public class PetController {
 
     //Autowire a PetService (with Constructor Injection) to use its method
