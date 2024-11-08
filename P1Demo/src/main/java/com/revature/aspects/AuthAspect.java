@@ -15,7 +15,7 @@ public class AuthAspect {
     //EXCEPT for the registerUser method - anyone should be able to register
     @Before("execution(* com.revature.controllers.UserController.*(..)) " +
             "&& !execution(* com.revature.controllers.UserController.registerUser(..))")
-    public void checkLogin() throws IllegalArgumentException{
+    public void checkLogin(){
 
         if(AuthController.session == null){
             throw new IllegalArgumentException("You must be logged in to do this!");
@@ -34,13 +34,13 @@ public class AuthAspect {
 
     //An Advice that checks for admin privileges before calling methods with @AdminOnly
     @Before("@annotation(com.revature.aspects.AdminOnly)")
-    public void checkAdmin() throws IllegalArgumentException{
+    public void checkAdmin() {
 
         //If the logged in user does not have a role equal to "admin", throw an exception
         if(!AuthController.session.getAttribute("role").equals("admin")){
             throw new IllegalArgumentException("You must be an admin to do this!");
         }
-        
+
     }
 
 
