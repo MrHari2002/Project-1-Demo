@@ -23,7 +23,7 @@ export const Login:React.FC = () => {
     //Function that sends login POST request to the server
     //This navigates to /pets if role is "User" and /users if role is "Admin"
 
-
+    
 
     return(
         /*Bootstrap gives us this Container element that does some default padding and centering*/
