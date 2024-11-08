@@ -9,21 +9,26 @@ export const Login:React.FC = () => {
         username:"",
         password:""
     })
-    //! Ben paste this in chat lol
 
     //we need a useNavigate hook to navigate between components programatically
         //(which means we don't have to manually switch the URL!)
     const navigate = useNavigate()
 
     //Function that stores user input
-    const storeValues = () => {
+    const storeValues = (input:any) => {
 
+        const name = input.target.name //the name of the input box that changed
+        const value = input.target.value //the value in the input box 
+
+        setLoginCreds((loginCreds) => ({...loginCreds, [name]:value}))
+
+        //check comments in storeValues() of Register.tsx for how this all works
     }
 
     //Function that sends login POST request to the server
     //This navigates to /pets if role is "User" and /users if role is "Admin"
 
-    
+
 
     return(
         /*Bootstrap gives us this Container element that does some default padding and centering*/

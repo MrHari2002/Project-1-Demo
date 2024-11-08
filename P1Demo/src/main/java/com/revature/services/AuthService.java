@@ -49,7 +49,7 @@ public class AuthService {
             -personalize the app (use their name, etc)
             -simplify our URLs!
                 ex: use the stored userId in "findBy" methods so we don't need to include it in the URL */
-        
+
         //Process the User into an OutgoingUserDTO and return it!
         return new OutgoingUserDTO(u.getUserId(), u.getUsername(), u.getRole());
 
