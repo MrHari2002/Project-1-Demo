@@ -33,7 +33,15 @@ public class AuthAspect {
     //To apply checkLogin() to all controller methods
 
     //An Advice that checks for admin privileges before calling methods with @AdminOnly
+    @Before("@annotation(com.revature.aspects.AdminOnly)")
+    public void checkAdmin() throws IllegalArgumentException{
 
+        //If the logged in user does not have a role equal to "admin", throw an exception
+        if(!AuthController.session.getAttribute("role").equals("admin")){
+            throw new IllegalArgumentException("You must be an admin to do this!");
+        }
+        
+    }
 
 
 
