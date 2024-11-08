@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useState } from "react"
 import { Button, Container, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
@@ -32,9 +33,28 @@ export const Login:React.FC = () => {
         //TODO: we should make sure the username/password are inputted first
 
         //use the username/password in the loginCreds state object
-        //!Ben, don't forget "withCredentials"
-        
-        //then() and catch()
+        const response = await axios.post("http://localhost:7777/auth", loginCreds)
+        .then(
+
+            //if the request is successful: 
+                //print the data 
+                //save it locally
+                //alert the user they logged in
+                //navigate to /pets
+                    //TODO: navigate to /users OR /pets depending on role
+
+            //response's definition doesn't exist if we just try to invoke it without an arrow function
+            //React doesn't know what the value is otherwise
+            (response) => {
+                console.log(response.data)
+
+                //saving the data locally
+                
+
+
+            }
+
+        )
 
     }
 
@@ -65,7 +85,7 @@ export const Login:React.FC = () => {
                 </div>
                 
 
-            <Button className="btn-success m-1">Login</Button>
+            <Button className="btn-success m-1" onClick={login}>Login</Button>
             <Button className="btn-dark" onClick={()=>navigate("/register")}>Register</Button>
         </Container>
     )
