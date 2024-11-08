@@ -29,5 +29,7 @@ public class AuthAspect {
          we'll handle errors on the front in the exact same way. so no biggie.*/
 
     }
+    //NOTE: we could have also done "com.revature.controllers.*.*(..)"
+    //To apply checkLogin() to all controller methods
 
 }
