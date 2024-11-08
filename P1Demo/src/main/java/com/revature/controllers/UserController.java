@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.aspects.AdminOnly;
 import com.revature.models.DTOs.OutgoingUserDTO;
 import com.revature.models.User;
 import com.revature.services.UserService;
@@ -66,6 +67,7 @@ public class UserController {
     }
 
     //A method that updates a User's role
+    @AdminOnly //Only Admin Can Do This
     @PatchMapping("/{userId}") //PATCH requests to /users/{userId} will come here
     public ResponseEntity<User> updateUserRole(@PathVariable int userId, @RequestBody String newRole){
 
@@ -75,6 +77,7 @@ public class UserController {
     }
 
     //A method that deletes a User by id
+    @AdminOnly
     @DeleteMapping("/{userId}") //DELETE requests to /users/{userId} will come here
     public ResponseEntity<User> deleteUserById(@PathVariable int userId){
 
