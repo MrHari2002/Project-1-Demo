@@ -1,26 +1,58 @@
-import { Container } from "react-bootstrap"
+import { useState } from "react"
+import { Button, Container, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 
 export const Login:React.FC = () => {
 
-    //TODO: a state object that holds username and password
-
+    //A state object that holds username and password
+    const[loginCreds, setLoginCreds] = useState({
+        username:"",
+        password:""
+    })
+    //! Ben paste this in chat lol
 
     //we need a useNavigate hook to navigate between components programatically
         //(which means we don't have to manually switch the URL!)
     const navigate = useNavigate()
 
-    //TODO: function that stores user input
+    //Function that stores user input
+    const storeValues = () => {
 
-    //TODO: function that does the login
+    }
+
+    //Function that sends login POST request to the server
+    //This navigates to /pets if role is "User" and /users if role is "Admin"
+
+
 
     return(
         /*Bootstrap gives us this Container element that does some default padding and centering*/
         <Container> 
-            <h3>Login inputs etc. pending</h3>
 
-            <button>Login</button>
-            <button onClick={()=>navigate("/register")}>Register</button>
+            <h1>Welcome to the Pet Shop</h1>
+                <h3>Please Log In:</h3>
+                
+                <div>
+                    <Form.Control
+                        type="text"
+                        placeholder="username"
+                        name="username"
+                        onChange={storeValues}
+                    />
+                </div>
+
+                <div>
+                    <Form.Control
+                        type="password"
+                        placeholder="password"
+                        name="password"
+                        onChange={storeValues}
+                    />
+                </div>
+                
+
+            <Button className="btn-success m-1">Login</Button>
+            <Button className="btn-dark" onClick={()=>navigate("/register")}>Register</Button>
         </Container>
     )
 
