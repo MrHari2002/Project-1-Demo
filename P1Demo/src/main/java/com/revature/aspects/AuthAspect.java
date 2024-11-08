@@ -32,4 +32,9 @@ public class AuthAspect {
     //NOTE: we could have also done "com.revature.controllers.*.*(..)"
     //To apply checkLogin() to all controller methods
 
+    //An Advice that checks for admin privileges before calling methods with @AdminOnly
+
+
+
+
 }
