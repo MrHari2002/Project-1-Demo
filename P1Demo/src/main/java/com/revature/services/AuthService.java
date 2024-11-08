@@ -41,6 +41,15 @@ public class AuthService {
         AuthController.session.setAttribute("username", u.getUsername());
         AuthController.session.setAttribute("role", u.getRole());
 
+        //Why store all this user info in session attributes?
+
+        /* -It helps store user info that we can use to check if:
+            -they're logged in
+            -their role is appropriate for the functionality they want to access
+            -personalize the app (use their name, etc)
+            -simplify our URLs!
+                ex: use the stored userId in "findBy" methods so we don't need to include it in the URL */
+        
         //Process the User into an OutgoingUserDTO and return it!
         return new OutgoingUserDTO(u.getUserId(), u.getUsername(), u.getRole());
 
