@@ -27,7 +27,16 @@ export const Login:React.FC = () => {
 
     //Function that sends login POST request to the server
     //This navigates to /pets if role is "User" and /users if role is "Admin"
+    const login = async () => {
 
+        //TODO: we should make sure the username/password are inputted first
+
+        //use the username/password in the loginCreds state object
+        //!Ben, don't forget "withCredentials"
+        
+        //then() and catch()
+
+    }
 
 
     return(
