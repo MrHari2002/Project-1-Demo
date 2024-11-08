@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { Container } from "react-bootstrap"
 import { PetTable } from "./PetTable"
+import { store } from "../../globalData/store"
 
 export const PetContainer:React.FC = () => {
 
@@ -19,8 +20,8 @@ export const PetContainer:React.FC = () => {
     const getPetsByUserId = async () => {
 
         //axios GET request 
-        //TODO: hardcoding user ID for now, but this will be the id of the logged in user
-        const response = await axios.get("http://localhost:7777/pets/user/1")
+        //NOTE: using the id of the loggedInUser to get only their pets
+        const response = await axios.get("http://localhost:7777/pets/user/" + store.loggedInUser.userId)
         //TODO: then(), catch() etc
 
         //populate the pets state object
@@ -33,6 +34,8 @@ export const PetContainer:React.FC = () => {
     return(
         /* TODO: navbar thing? for navigation options etc */
         <Container>
+
+            <h3>{store.loggedInUser.username}'s Pets:</h3>
 
             {/* Sending the entire pets array to get rendered in the PetTable Component */}
             <PetTable pets={pets}></PetTable>

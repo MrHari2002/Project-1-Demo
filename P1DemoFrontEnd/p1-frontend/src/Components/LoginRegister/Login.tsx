@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { Button, Container, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
+import { store } from "../../globalData/store"
 
 export const Login:React.FC = () => {
 
@@ -46,15 +47,22 @@ export const Login:React.FC = () => {
             //response's definition doesn't exist if we just try to invoke it without an arrow function
             //React doesn't know what the value is otherwise
             (response) => {
+
                 console.log(response.data)
 
-                //saving the data locally
-                
+                //saving the logged in user data globally
+                store.loggedInUser = response.data
 
+                //greet the user
+                alert("Welcome, " + store.loggedInUser.username)
 
+                //navigate to /pets
+                navigate("/pets")
             }
-
         )
+        .catch((error)=>{
+            alert("Login Failed! Please try again.")
+        })
 
     }
 
