@@ -34,6 +34,13 @@ public class AuthService {
         session.setAttribute("username", user.getUsername());
         session.setAttribute("role", user.getRole());
 
+        /*
+            It helps store user info that we can use to check if:
+            - They are logged in
+            - Their role is appropriate for the functionality they want to access
+            - etc
+         */
+
         //Process the User into an outgoing user DTO and return it
         return new OutgoingUserDTO(user.getUserId(), user.getUsername(), user.getRole());
     }
