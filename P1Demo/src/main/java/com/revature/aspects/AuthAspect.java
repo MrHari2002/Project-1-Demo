@@ -26,7 +26,7 @@ public class AuthAspect {
          (thus the handler in the controller won't catch it)
 
          we could do a global exception handler with @ControllerAdvice
-         we'll handler errors on the front in the exact same way. so no biggie.*/
+         we'll handle errors on the front in the exact same way. so no biggie.*/
 
     }
 
