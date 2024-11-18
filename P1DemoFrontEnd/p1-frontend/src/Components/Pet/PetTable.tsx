@@ -1,6 +1,14 @@
-import { Container, Table } from "react-bootstrap"
+import { Button, Container, Table } from "react-bootstrap"
 
 export const PetTable: React.FC<{ pets: any[] }> = ({ pets }) => {
+    const updatePet = (id: number) => {
+        alert("Pets with id " + id + "has been updated")
+    }
+
+    const deletePet = (id: number) => {
+        alert("Pets with id " + id + "has been deleted")
+    }
+
     return (
         <Container>
             <Table>
@@ -17,6 +25,10 @@ export const PetTable: React.FC<{ pets: any[] }> = ({ pets }) => {
                             <td>{pet.petId}</td>
                             <td>{pet.name}</td>
                             <td>{pet.species}</td>
+                            <td>
+                                <Button className="btn-info" onClick={() => updatePet(pet.petId)}>Update</Button>
+                                <Button className="btn-danger" onClick={() => updatePet(pet.petId)}>Delete</Button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

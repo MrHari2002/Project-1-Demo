@@ -4,6 +4,7 @@ import { Login } from './Components/LoginRegister/Login';
 import { Register } from './Components/LoginRegister/Register';
 import 'bootstrap/dist/css/bootstrap.css'; //NEED THIS FOR BOOTSTRAP TO WORK
 import { PetContainer } from './Components/Pet/PetContainer';
+import { User } from './Components/User/User';
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
           {/*blank path makes this component render at startup*/}
           <Route path="" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/pet" element={<PetContainer />} />
+          <Route path="/pets" element={<PetContainer />} />
+          <Route path="/users" element={<User />} />
+
         </Routes>
       </BrowserRouter>
     </div>

@@ -49,7 +49,12 @@ export const Login: React.FC = () => {
 
                     alert("Welcome, " + store.loggedInUser.username)
 
-                    navigate("/pet")
+                    if (store.loggedInUser.role === 'admin') {
+                        navigate("/users")
+                    }
+                    else {
+                        navigate("/pets")
+                    }
 
 
 
